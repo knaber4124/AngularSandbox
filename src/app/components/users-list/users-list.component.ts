@@ -10,6 +10,7 @@ export class UsersListComponent {
   users!: User[];
   showExtended: boolean = true;
   loaded: boolean = false;
+  enableAdd: boolean = true;
 
   constructor() { }
 
@@ -24,7 +25,8 @@ export class UsersListComponent {
             street: '1 Main St',
             city: 'Boston',
             state: 'MA'
-          }
+          },
+          image: 'http://picsum.photos/300'
         },
         {
           firstName: 'Kevin',
@@ -34,7 +36,8 @@ export class UsersListComponent {
             street: '25 Boylston St',
             city: 'Boston',
             state: 'MA'
-          }
+          },
+          image: 'http://picsum.photos/300'
         },
         {
           firstName: 'Cathy',
@@ -44,7 +47,8 @@ export class UsersListComponent {
             street: '100 Commonwealth Ave',
             city: 'Boston',
             state: 'MA'
-          }
+          }, 
+          image: 'http://picsum.photos/300'
         }
       ];
     this.loaded = true
@@ -68,6 +72,7 @@ export class UsersListComponent {
   addUser(user: User) {
     this.users.push(user);
   }
+
 
 
 }

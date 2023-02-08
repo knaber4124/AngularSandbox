@@ -8,9 +8,11 @@ import { User } from 'src/app/models/User';
 })
 export class UsersListComponent {
   users!: User[];
-  showExtended: boolean = true;
+  showExtended: boolean = false;
   loaded: boolean = false;
-  enableAdd: boolean = true;
+  enableAdd: boolean = false;
+  currentClasses = {};
+  currentStyles = {};
 
   constructor() { }
 
@@ -26,7 +28,8 @@ export class UsersListComponent {
             city: 'Boston',
             state: 'MA'
           },
-          image: 'http://picsum.photos/300'
+          image: 'http://picsum.photos/300',
+          isActive: false
         },
         {
           firstName: 'Kevin',
@@ -37,7 +40,8 @@ export class UsersListComponent {
             city: 'Boston',
             state: 'MA'
           },
-          image: 'http://picsum.photos/300'
+          image: 'http://picsum.photos/300',
+          isActive: true
         },
         {
           firstName: 'Cathy',
@@ -47,8 +51,9 @@ export class UsersListComponent {
             street: '100 Commonwealth Ave',
             city: 'Boston',
             state: 'MA'
-          }, 
-          image: 'http://picsum.photos/300'
+          },
+          image: 'http://picsum.photos/300',
+          isActive: true
         }
       ];
     this.loaded = true
@@ -67,10 +72,28 @@ export class UsersListComponent {
       //   state: 'CA'
       // }
     })
+
+    this.setCurrentClass();
+    this.setCurrentStyles();
+
   }
 
   addUser(user: User) {
     this.users.push(user);
+  }
+
+  setCurrentClass() {
+    this.currentClasses = {
+      'btn-success': this.enableAdd,
+      'big-text': this.showExtended
+    }
+  }
+
+  setCurrentStyles() {
+    this.currentStyles = {
+      'padding-top': this.showExtended ? '0' : '130px',
+      'font-size': this.showExtended ? '' : '40px'
+    }
   }
 
 

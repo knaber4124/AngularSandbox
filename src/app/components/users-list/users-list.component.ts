@@ -10,9 +10,8 @@ export class UsersListComponent {
   users!: User[];
   showExtended: boolean = false;
   loaded: boolean = false;
-  enableAdd: boolean = false;
-  currentClasses = {};
-  currentStyles = {};
+  enableAdd: boolean = true;
+  event:any;
 
   constructor() { }
 
@@ -28,8 +27,8 @@ export class UsersListComponent {
             city: 'Boston',
             state: 'MA'
           },
-          image: 'http://picsum.photos/300',
-          isActive: false
+          isActive: false,
+          registered: new Date('1/1/2020 08:25:59')
         },
         {
           firstName: 'Kevin',
@@ -40,8 +39,9 @@ export class UsersListComponent {
             city: 'Boston',
             state: 'MA'
           },
-          image: 'http://picsum.photos/300',
-          isActive: true
+          isActive: true,
+          registered: new Date('5/10/2020 10:45:45')
+
         },
         {
           firstName: 'Cathy',
@@ -52,50 +52,20 @@ export class UsersListComponent {
             city: 'Boston',
             state: 'MA'
           },
-          image: 'http://picsum.photos/300',
-          isActive: true
+          isActive: true,
+          registered: new Date('11/25/2021 13:05:00')
+
         }
       ];
-    this.loaded = true
-
-
-
-    // this.showExtended = false;
-
-    this.addUser({
-      firstName: 'Sally',
-      lastName: 'Fields',
-      // age: 60
-      // address: {
-      //   street: '1200 Elm St',
-      //   city: 'Los Angeles',
-      //   state: 'CA'
-      // }
-    })
-
-    this.setCurrentClass();
-    this.setCurrentStyles();
-
+    this.loaded = true;
   }
 
   addUser(user: User) {
     this.users.push(user);
   }
 
-  setCurrentClass() {
-    this.currentClasses = {
-      'btn-success': this.enableAdd,
-      'big-text': this.showExtended
-    }
+  fireEvent(e) {
+    // console.log('button clicked')
+    console.log(e.type);
   }
-
-  setCurrentStyles() {
-    this.currentStyles = {
-      'padding-top': this.showExtended ? '0' : '130px',
-      'font-size': this.showExtended ? '' : '40px'
-    }
-  }
-
-
-
 }

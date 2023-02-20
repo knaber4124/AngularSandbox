@@ -19,7 +19,7 @@ export class UsersListComponent {
   enableAdd: boolean = false;
   event: any;
   showUserForm: boolean = false;
-  form: any;
+  @ViewChild('userForm') form: any;
 
   constructor() { }
 
@@ -75,7 +75,7 @@ export class UsersListComponent {
       value.registered = new Date();
       value.hide = true;
       this.users.unshift(value);
-      // this.form.reset();
+      this.form.reset();
     }
   }
 
